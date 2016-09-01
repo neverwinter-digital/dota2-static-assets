@@ -1,6 +1,6 @@
 apikey:
 savepath: ../images
 db:
-  name:
-  user:
-  password:
+  name: neverwinter_dota2_development
+  user: neverwinter
+  password: neverwinter
