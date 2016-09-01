@@ -1,4 +1,6 @@
-api:
-  key:
-output:
-  path: ../images
+apikey:
+savepath: ../images
+db:
+  name:
+  user:
+  password:

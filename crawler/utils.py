@@ -39,5 +39,9 @@ def mkdir(path):
         return False
 
 
+def buildSteamApiUrl(interface, method, apiKey):
+    return "https://api.steampowered.com/{0}/{1}/v1/?key={2}&format=json".format(interface, method, apiKey)
+
+
 def removeDir(path):
     shutil.rmtree(path, ignore_errors=True)

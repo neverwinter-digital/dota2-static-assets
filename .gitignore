@@ -1,5 +1,7 @@
 images/
 config.yaml
+crawler/resources/generated/
+.idea/
 
 ### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
