@@ -25,7 +25,6 @@ RUN mkdir /usr/local/crawler
 COPY crawler /usr/local/crawler/
 RUN mkdir /usr/local/images/
 RUN chmod +x /usr/local/crawler/run_crawler.sh
-COPY images /var/www
 RUN pip install --requirement /usr/local/crawler/requirement.txt
 
 CMD cron && nginx
