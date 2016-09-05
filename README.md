@@ -2,21 +2,24 @@
 ```
 python 2.7
 pip
+Docker
 ```
+
 ### Set up
-1. Clone or download the repo. Need to update all git submodule as well: `git submodule update --recursive`. Then cd into `crawler` folder.
-2. Run `pip install -r requirement.txt` to install python packages.
-3. Create a `config.yaml` based on `config.yaml.example`.
-4. Fill in the steam api key in `crawler/config.yaml`. You can also specify the images output path (default `images/`) and db credentials.
-5. Run crawlers. e.g. `python items_crawler.py`. <br>
-For `teams_crawler`, currently we need to read team data from database, so make sure the db credentials in config is correct and the db is running.
-6. When it finish, check the result in `images/xxx`.
+0. Install Docker.
+1. Clone or download the repo. `cd` to the repo. `git checkout Docker` to choose Docker branch.
+2. Need to update all git submodule as well: `git submodule update --recursive`.
+3. Build the docker `docker build -t static-server .`
+4. After build, run the docker with `docker run -p 8000:80 -d static-server`. (default run on host port 8000)
+5. Now checkout the served images, for example, `localhost:8000/items/aegis_lg.png`.
 
 ### Config
-If there are any update in items or heros, you need to manually update information in the `dota2-constant` submodule.
+- For Docker configs, update in `Dockerfile`. You can set up environment varible in `Dockerfile` such as Databse connection.
+- For Cron job configs, update in `crontab`.
+- For the script to run crawler, check `run_crawler.sh` in crawler folder.
 
 ### Filename Specification
-##### Heros
+##### Heroes
 ```
 HERO_NAME_full.png
 HERO_NAME_lg.png
@@ -48,4 +51,4 @@ TEAM_ID_sponsor.png
 e.g. `15_ticket.png`
 
 ### TODO
-* 战队队员
+* Teams的数据库连接
