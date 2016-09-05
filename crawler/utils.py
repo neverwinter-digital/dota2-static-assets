@@ -20,7 +20,14 @@ def readYamlFile(path):
 
 
 def getConfig():
-    return readYamlFile("./config.yaml")
+    config = {'db': {}}
+    config['apikey'] = os.environ.get('STEAM_API_KEY', 'A72DE7D7BE9870C8DA671D67941CCAA7')
+    config['savepath'] = os.environ.get('SAVE_PATH', '../images')
+    config['db']['name'] = os.environ.get('DB_NAME', 'neverwinter_dota2_development')
+    config['db']['port'] = os.environ.get('DB_PORT', '5432')
+    config['db']['user'] = os.environ.get('DB_USER', 'Gison')
+    config['db']['password'] = os.environ.get('DB_PASSWORD', '')
+    return config
 
 
 def readJson(path):
