@@ -49,8 +49,8 @@ class TeamsCrawler(object):
         return res
 
     def getTeamFromDb(self):
-        conn = psycopg2.connect("dbname={0} user={1} password={2}".format(config['db']['name'], config['db']['user'],
-                                                                          config['db']['password']))
+        conn = psycopg2.connect("dbname={0} user={1} password={2} host={3} port={4}".format(config['db']['name'], config['db']['user'],
+                                                                          config['db']['password'], config['db']['host'], config['db']['port']))
         cur = conn.cursor()
         cur.execute("SELECT id, logo_id, logo_sponsor_id FROM dota2_teams WHERE logo_id <> 0")
         data = cur.fetchall()

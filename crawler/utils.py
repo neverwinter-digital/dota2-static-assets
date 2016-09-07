@@ -27,6 +27,7 @@ def getConfig():
     config['db']['port'] = os.environ.get('DB_PORT', '5432')
     config['db']['user'] = os.environ.get('DB_USER', 'Gison')
     config['db']['password'] = os.environ.get('DB_PASSWORD', '')
+    config['db']['host'] = os.environ.get('DB_URL', 'localhost')
     return config
 
 
