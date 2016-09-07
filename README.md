@@ -8,10 +8,11 @@ Docker
 ### Set up
 0. Install Docker.
 1. Clone or download the repo. `cd` to the repo. `git checkout Docker` to choose Docker branch.
-2. Need to update all git submodule as well: `git submodule update --recursive`.
-3. Build the docker `docker build -t static-server .`
-4. After build, run the docker with `docker run -p 8000:80 -d static-server`. (default run on host port 8000)
-5. Now checkout the served images, for example, `localhost:8000/items/aegis_lg.png`.
+2. Need to update all git submodule as well: `git submodule update --init --recursive`.
+3. Run `cat Dockerfile.example | envsubst >> "Dockerfile"` to populate the Dockerfile with environment variables.
+4. Build the docker `docker build -t static-server .`
+5. After build, run the docker with `docker run -p <port>:80 -d static-server` on the specific port you want.
+6. Now checkout the served images, for example, `<ip>:<port>/items/aegis_lg.png`.
 
 ### Config
 - For Docker configs, update in `Dockerfile`. You can set up environment varible in `Dockerfile` such as Databse connection.
@@ -49,6 +50,3 @@ TEAM_ID_logo.png
 TEAM_ID_sponsor.png
 ```
 e.g. `15_ticket.png`
-
-### TODO
-* Teams的数据库连接
