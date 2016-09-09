@@ -1,4 +1,4 @@
-from utils import buildSteamApiUrl, getConfig, mkdir
+from utils import buildSteamApiUrl, getConfig, mkdir, listAlFiles
 from progress.bar import Bar
 import psycopg2
 import urllib
@@ -14,9 +14,16 @@ class TeamsCrawler(object):
 
     def crawl(self):
         teams = self.getTeamFromDb()
+        existingFiles = listAlFiles(self.savePath)
+        leagueIdSet = set()
+        for filename in existingFiles:
+            leagueIdSet.add(filename.split('_')[0])
         bar = Bar('Crawling', max=len(teams))
         for team in teams:
             teamId = team[0]
+            if teamId in leagueIdSet:
+                bar.next()
+                continue
             logoId = team[1]
             try:
                 self.loadAndSaveImageToPath(self.getImageUrlByUgcId(logoId),
@@ -49,8 +56,10 @@ class TeamsCrawler(object):
         return res
 
     def getTeamFromDb(self):
-        conn = psycopg2.connect("dbname={0} user={1} password={2} host={3} port={4}".format(config['db']['name'], config['db']['user'],
-                                                                          config['db']['password'], config['db']['host'], config['db']['port']))
+        conn = psycopg2.connect(
+            "dbname={0} user={1} password={2} host={3} port={4}".format(config['db']['name'], config['db']['user'],
+                                                                        config['db']['password'], config['db']['host'],
+                                                                        config['db']['port']))
         cur = conn.cursor()
         cur.execute("SELECT id, logo_id, logo_sponsor_id FROM dota2_teams WHERE logo_id <> 0")
         data = cur.fetchall()
@@ -74,7 +83,7 @@ class TeamsCrawler(object):
 
 if __name__ == '__main__':
     config = getConfig()
-    mkdir(config['savepath'] + '/teams') # create the output folder if not exists
+    mkdir(config['savepath'] + '/teams')  # create the output folder if not exists
     crawler = TeamsCrawler()
     crawler.crawl()
     # crawler.crawlByTeamId(15)
