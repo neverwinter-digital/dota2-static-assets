@@ -1,6 +1,6 @@
 import json
 import urllib
-from utils import download, readJson, mkdir, getConfig, buildSteamApiUrl
+from utils import listAlFiles, mkdir, getConfig, buildSteamApiUrl
 from progress.bar import Bar
 import vdf
 
@@ -17,8 +17,21 @@ class LeagueCrawler(object):
         self.downloadSchema()
         items = self.loadAndParseVdf()
         leagues = self.getAllLeagueResource(items)
+
+        existingFiles = listAlFiles(self.savePath)
+        leagueIdSet = set()
+        for filename in existingFiles:
+            leagueIdSet.add(filename.split('_')[0])
+
+        # Any league id in the leagueIdSet means we can ignore these leagues
         bar = Bar('Crawling Leagues', max=len(leagues))
+
         for key, value in leagues.iteritems():
+            # skip already downloaded leagues
+            if key in leagueIdSet:
+                bar.next()
+                continue
+
             # First find out the valid url to use
             resourceId = value[0]
             if len(value) > 1:

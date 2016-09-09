@@ -3,6 +3,8 @@ import yaml
 import os
 import shutil
 import json
+from os import listdir
+from os.path import isfile, join
 
 
 def download(url, filepath):
@@ -45,6 +47,10 @@ def mkdir(path):
         return True
     else:
         return False
+
+
+def listAlFiles(path):
+    return [f for f in listdir(path) if isfile(join(path, f))]
 
 
 def buildSteamApiUrl(interface, method, apiKey):
