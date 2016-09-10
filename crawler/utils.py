@@ -25,6 +25,7 @@ def getConfig():
     config = {'db': {}}
     config['apikey'] = os.environ.get('STEAM_API_KEY', 'A72DE7D7BE9870C8DA671D67941CCAA7')
     config['savepath'] = os.environ.get('SAVE_PATH', '../images')
+    config['volumnPath'] = os.environ.get('VOLUMN_PATH', '/var/www')
     config['db']['name'] = os.environ.get('DB_NAME', 'neverwinter_dota2_development')
     config['db']['port'] = os.environ.get('DB_PORT', '5432')
     config['db']['user'] = os.environ.get('DB_USER', 'Gison')

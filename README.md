@@ -11,7 +11,7 @@ Docker
 2. Need to update all git submodule as well: `git submodule update --init --recursive`.
 3. Run `cat Dockerfile.example | envsubst >> "Dockerfile"` to populate the Dockerfile with environment variables.
 4. Build the docker `docker build -t static-server .`
-5. After build, run the docker with `docker run -p <port>:80 -d static-server` on the specific port you want.
+5. After build, run the docker with `docker run -t -p <port>:80 -d static-server -v /mnt/static_server:/var/www` on the specific port you want. You can also specify the volumn for the docker data.
 6. Now checkout the served images, for example, `<ip>:<port>/items/aegis_lg.png`.
 
 ### Config

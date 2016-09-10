@@ -18,7 +18,7 @@ class LeagueCrawler(object):
         items = self.loadAndParseVdf()
         leagues = self.getAllLeagueResource(items)
 
-        existingFiles = listAlFiles(self.savePath)
+        existingFiles = listAlFiles(self.config['volumnPath'] + '/leagues/')
         leagueIdSet = set()
         for filename in existingFiles:
             leagueIdSet.add(filename.split('_')[0])

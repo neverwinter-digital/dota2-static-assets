@@ -14,7 +14,7 @@ class TeamsCrawler(object):
 
     def crawl(self):
         teams = self.getTeamFromDb()
-        existingFiles = listAlFiles(self.savePath)
+        existingFiles = listAlFiles(self.config['volumnPath'] + '/teams/')
         leagueIdSet = set()
         for filename in existingFiles:
             leagueIdSet.add(filename.split('_')[0])
