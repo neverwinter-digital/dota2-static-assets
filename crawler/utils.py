@@ -51,7 +51,7 @@ def mkdir(path):
 
 
 def listAlFiles(path):
-    return [f for f in listdir(path) if isfile(join(path, f))]
+    return os.listdir(path)
 
 
 def buildSteamApiUrl(interface, method, apiKey):
