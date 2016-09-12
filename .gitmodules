@@ -1,3 +1,3 @@
 [submodule "crawler/dota2-constant"]
 	path = crawler/dota2-constant
-	url = https://github.com/neverwinter-digital/dota2-constant
+	url = git@github.com:neverwinter-digital/dota2-constant.git
