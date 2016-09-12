@@ -2,7 +2,6 @@ images/
 config.yaml
 crawler/resources/generated/
 .idea/
-Dockerfile
 
 items_game.txt
 
