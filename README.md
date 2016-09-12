@@ -14,6 +14,19 @@ Docker
 5. After build, run the docker with `docker run -t -p <port>:80 -d static-server -v /mnt/static_server:/var/www` on the specific port you want. You can also specify the volumn for the docker data.
 6. Now checkout the served images, for example, `<ip>:<port>/items/aegis_lg.png`.
 
+### Environment Variable
+Please set the following environment variables.
+```
+ENV STEAM_API_KEY=
+ENV SAVE_PATH=../images
+ENV VOLUMN_PATH=/var/www
+ENV DB_URL=
+ENV DB_NAME=
+ENV DB_PORT=
+ENV DB_USER=
+ENV DB_PASSWORD=
+```
+
 ### Config
 - For Docker configs, update in `Dockerfile`. You can set up environment varible in `Dockerfile` such as Databse connection.
 - For Cron job configs, update in `crontab`.
