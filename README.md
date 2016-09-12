@@ -17,8 +17,6 @@ Docker
 Please set the following environment variables.
 ```
 ENV STEAM_API_KEY=
-ENV SAVE_PATH=../images
-ENV VOLUMN_PATH=/var/www
 ENV DB_URL=
 ENV DB_NAME=
 ENV DB_PORT=
