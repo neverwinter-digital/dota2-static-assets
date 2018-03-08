@@ -1,4 +1,4 @@
-import urllib
+import urllib.request
 import yaml
 import os
 import shutil
@@ -8,11 +8,15 @@ from os.path import isfile, join
 
 
 def download(url, filepath):
-    u = urllib.urlopen(url)
-    data = u.read()
-    f = open(filepath, 'wb')
-    f.write(data)
-    f.close()
+    try:
+        u = urllib.request.urlopen(url)
+        data = u.read()
+        f = open(filepath, 'wb')
+        f.write(data)
+        f.close()
+    except urllib.error.HTTPError:
+        pass
+
 
 
 def readYamlFile(path):

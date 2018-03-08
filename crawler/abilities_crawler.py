@@ -6,13 +6,13 @@ class AbilitiesCrawler(object):
     def __init__(self):
         self.config = getConfig()
         self.savePath = config['savepath'] + '/abilities/'
-        self.constantPath = "dota2-constant/yml/abilities.yml"
+        self.constantPath = "dota2-constant/yml_min/abilities.yml"
 
     def crawl(self):
         endpoint = "http://cdn.dota2.com/apps/dota2/images/abilities/"
         items = readYamlFile(self.constantPath)
         bar = Bar('Crawling abilities', max=len(items))
-        for key, value in items.iteritems():
+        for key, value in items.items():
             smname = "{0}_sm.png".format(value)
             mdname = "{0}_md.png".format(value)
             lgname = "{0}_lg.png".format(value)
