@@ -3,11 +3,10 @@ import yaml
 import os
 import shutil
 import json
-from os import listdir
-from os.path import isfile, join
 
 
 def download(url, filepath):
+    """"download image from url, save it to filepath"""
     try:
         u = urllib.request.urlopen(url)
         data = u.read()
@@ -16,7 +15,6 @@ def download(url, filepath):
         f.close()
     except urllib.error.HTTPError:
         pass
-
 
 
 def readYamlFile(path):

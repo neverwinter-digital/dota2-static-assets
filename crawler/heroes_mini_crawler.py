@@ -3,6 +3,9 @@ from progress.bar import Bar
 
 
 class HeroesMiniCrawler:
+    """
+    Download mini map hero images from Trackdota
+    """
     def __init__(self):
         self.config = get_config()
         self.savePath = config['savepath'] + '/heroes/'

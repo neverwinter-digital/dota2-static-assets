@@ -3,6 +3,9 @@ from progress.bar import Bar
 
 
 class AbilitiesCrawler(object):
+    """
+    Download ability images from CDN
+    """
     def __init__(self):
         self.config = getConfig()
         self.savePath = config['savepath'] + '/abilities/'

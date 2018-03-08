@@ -1,9 +1,10 @@
-from utils import download, readYamlFile, mkdir, getConfig
+from utils import download, readYamlFile, mkdir, get_config
 from progress.bar import Bar
+
 
 class HeroCrawler(object):
     def __init__(self):
-        self.config = getConfig()
+        self.config = get_config()
         self.savePath = config['savepath'] + '/heroes/'
         self.constantPath = "dota2-constant/yml/heroes.yml"
 
@@ -11,7 +12,7 @@ class HeroCrawler(object):
         endpoint = "http://cdn.dota2.com/apps/dota2/images/heroes/"
         heros = readYamlFile(self.constantPath)
         bar = Bar('Crawling heroes', max=len(heros))
-        for key, value in heros.iteritems():
+        for key, value in heros.items():
             full = value + "_full.png"
             lg = value + "_lg.png"
             sb = value + "_sb.png"
@@ -23,8 +24,9 @@ class HeroCrawler(object):
             bar.next()
         bar.finish()
 
+
 if __name__ == '__main__':
-    config = getConfig()
+    config = get_config()
     savePath = "{0}/heroes/".format(config["savepath"])
     mkdir(savePath)
     crawler = HeroCrawler()
