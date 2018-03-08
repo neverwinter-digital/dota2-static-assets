@@ -25,7 +25,7 @@ def readYamlFile(path):
     return items
 
 
-def getConfig():
+def get_config():
     config = {'db': {}}
     config['apikey'] = os.environ.get('STEAM_API_KEY', 'A72DE7D7BE9870C8DA671D67941CCAA7')
     config['savepath'] = os.environ.get('SAVE_PATH', '../images')
