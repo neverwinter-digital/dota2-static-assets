@@ -6,7 +6,7 @@ class ItemCrawler(object):
     def __init__(self):
         self.config = get_config()
         self.savePath = config['savepath'] + '/items/'
-        self.constantPath = "dota2-constant/yml/items.yml"
+        self.constantPath = "dota2-constant/active_yml/items.yml"
 
     def crawl(self):
         endpoint = "http://cdn.dota2.com/apps/dota2/images/items/"

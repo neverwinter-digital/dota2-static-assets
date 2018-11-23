@@ -1,4 +1,4 @@
-from utils import download, readYamlFile, mkdir, getConfig
+from utils import download, readYamlFile, mkdir, get_config
 from progress.bar import Bar
 
 
@@ -7,9 +7,9 @@ class AbilitiesCrawler(object):
     Download ability images from CDN
     """
     def __init__(self):
-        self.config = getConfig()
+        self.config = get_config()
         self.savePath = config['savepath'] + '/abilities/'
-        self.constantPath = "dota2-constant/yml_min/abilities.yml"
+        self.constantPath = "dota2-constant/active_yml/abilities.yml"
 
     def crawl(self):
         endpoint = "http://cdn.dota2.com/apps/dota2/images/abilities/"
@@ -27,7 +27,7 @@ class AbilitiesCrawler(object):
 
 
 if __name__ == '__main__':
-    config = getConfig()
+    config = get_config()
     savePath = "{0}/abilities/".format(config["savepath"])
     mkdir(savePath)
     crawler = AbilitiesCrawler()

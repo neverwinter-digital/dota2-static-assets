@@ -3,17 +3,20 @@ import yaml
 import os
 import shutil
 import json
+import os.path
 
 
 def download(url, filepath):
     """"download image from url, save it to filepath"""
+    if os.path.exists(filepath):
+        return
     try:
         u = urllib.request.urlopen(url)
         data = u.read()
         f = open(filepath, 'wb')
         f.write(data)
         f.close()
-    except urllib.error.HTTPError:
+    except urllib.error.HTTPError as e:
         pass
 
 

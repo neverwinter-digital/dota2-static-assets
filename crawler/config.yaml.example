@@ -1,7 +1,0 @@
-apikey:
-savepath: ../images
-db:
-  name: neverwinter_dota2_development
-  port: 5432
-  user: neverwinter
-  password: neverwinter

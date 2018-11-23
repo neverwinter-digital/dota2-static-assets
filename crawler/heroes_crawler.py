@@ -6,7 +6,8 @@ class HeroCrawler(object):
     def __init__(self):
         self.config = get_config()
         self.savePath = config['savepath'] + '/heroes/'
-        self.constantPath = "dota2-constant/yml/heroes.yml"
+        self.constantPath = "dota2-constant/active_yml/heroes.yml"
+
 
     def crawl(self):
         endpoint = "http://cdn.dota2.com/apps/dota2/images/heroes/"
